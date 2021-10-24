@@ -1,8 +1,6 @@
 com\mycompany\mock\project\demo\configuration\SecurityConfig.class
 com\mycompany\mock\project\demo\service\QuestionService.class
 com\mycompany\mock\project\demo\configuration\AppInitializer.class
-com\mycompany\mock\project\demo\service\CSVService.class
-com\mycompany\mock\project\demo\helper\CSVHelper.class
 com\mycompany\mock\project\demo\repository\QuestionRepository.class
 com\mycompany\mock\project\demo\configuration\SecurityWebApplicationInitializer.class
 com\mycompany\mock\project\demo\repository\CategoryRepository.class

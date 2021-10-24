@@ -10,7 +10,6 @@ import com.mycompany.mock.project.demo.entities.CategoryEntity;
 import com.mycompany.mock.project.demo.entities.QuestionEntity;
 import com.mycompany.mock.project.demo.entities.UserEntity;
 import com.mycompany.mock.project.demo.entities.UserRoleEntity;
-import com.mycompany.mock.project.demo.service.CSVService;
 import com.mycompany.mock.project.demo.service.CategoriesReportService;
 import com.mycompany.mock.project.demo.service.CategoryService;
 import com.mycompany.mock.project.demo.service.QuestionService;
@@ -53,9 +52,6 @@ public class MentorController {
     
     @Autowired
     private CategoriesReportService categoriesReportService;
-
-    @Autowired
-    CSVService csvService;
 
 //    User Management
     @RequestMapping(value = {"/listUser"}, method = RequestMethod.GET)
@@ -224,14 +220,6 @@ public class MentorController {
 
         model.addAttribute("categoriesReports", categoriesReportService.getAllCategoriesReport());
         return "/mentor/listCategoriesReports";
-    }
-
-//  Upload    
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(Model model, @RequestParam("file") MultipartFile file) {
-        
-        csvService.save(file);
-        return "redirect:/mentor/listQuestions";
     }
     
     @RequestMapping(value = "/loadQuestionsByCategory/{categoryId}", method = RequestMethod.GET)

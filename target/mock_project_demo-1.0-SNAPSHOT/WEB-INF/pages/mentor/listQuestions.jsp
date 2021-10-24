@@ -80,7 +80,7 @@
                                     New
                                 </button>
                             </td>
-                        <form action="<c:url value="/mentor/upload"/>" method="POST"
+<!--                        <form action="<c:url value="/mentor/upload"/>" method="POST"
                               enctype="multipart/form-data">
                             <td style="padding-left: 40px">
                                 <input name="file" id="fileToUpload" type="file" accept="txt/csv">
@@ -91,7 +91,7 @@
                                     Upload
                                 </button>                                
                             </td>
-                        </form>
+                        </form>-->
                         </tr>
                     </table>
                     <br>
