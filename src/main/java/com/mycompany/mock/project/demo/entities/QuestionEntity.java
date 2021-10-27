@@ -47,8 +47,7 @@ public class QuestionEntity {
     public QuestionEntity() {
     }
 
-    public QuestionEntity(int id, String questionContent, String a, String b, String c, String d, String answer, int duration, CategoryEntity category) {
-        this.id = id;
+    public QuestionEntity(String questionContent, String a, String b, String c, String d, String answer, int duration, CategoryEntity category) {
         this.questionContent = questionContent;
         this.a = a;
         this.b = b;

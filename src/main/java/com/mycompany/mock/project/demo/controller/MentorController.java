@@ -5,19 +5,22 @@
  */
 package com.mycompany.mock.project.demo.controller;
 
-import com.google.gson.Gson;
+import com.mycompany.mock.project.demo.entities.CSVFile;
 import com.mycompany.mock.project.demo.entities.CategoryEntity;
 import com.mycompany.mock.project.demo.entities.QuestionEntity;
 import com.mycompany.mock.project.demo.entities.UserEntity;
-import com.mycompany.mock.project.demo.entities.UserRoleEntity;
+import com.mycompany.mock.project.demo.helper.UploadFileHelper;
 import com.mycompany.mock.project.demo.service.CategoriesReportService;
 import com.mycompany.mock.project.demo.service.CategoryService;
 import com.mycompany.mock.project.demo.service.QuestionService;
 import com.mycompany.mock.project.demo.service.UserRoleService;
 import com.mycompany.mock.project.demo.service.UserService;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,8 +30,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -49,7 +50,7 @@ public class MentorController {
 
     @Autowired
     private QuestionService questionService;
-    
+
     @Autowired
     private CategoriesReportService categoriesReportService;
 
@@ -171,6 +172,7 @@ public class MentorController {
 
         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("questions", questionService.getQuestionByCategory("Java"));
+        model.addAttribute("csvFile", new CSVFile());
         return "/mentor/listQuestions";
     }
 
@@ -213,7 +215,7 @@ public class MentorController {
         questionService.deleteQuestion(questionId);
         return "redirect:/mentor/listQuestions";
     }
-    
+
 //  Categories Report
     @RequestMapping(value = {"/listCategoriesReports"}, method = RequestMethod.GET)
     public String listCategoriesReports(Model model) {
@@ -221,7 +223,7 @@ public class MentorController {
         model.addAttribute("categoriesReports", categoriesReportService.getAllCategoriesReport());
         return "/mentor/listCategoriesReports";
     }
-    
+
     @RequestMapping(value = "/loadQuestionsByCategory/{categoryId}", method = RequestMethod.GET)
     public String loadQuestionsByCategory(Model model, @PathVariable("categoryId") int categoryId) {
         model.addAttribute("categories", categoryService.getAllCategories());
@@ -230,5 +232,60 @@ public class MentorController {
                 categoryService.getCategoryById(categoryId).getCategoryName()));
         return "mentor/listQuestions";
     }
-    
+
+//  Upload CSV file
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public String upload(Model model,
+            @ModelAttribute(value = "csvFile") CSVFile csvFile,
+            HttpServletRequest request) {
+        try {
+            File file = UploadFileHelper.simpleUpload(csvFile.getFile(),
+                    request, true);
+            List<QuestionEntity> questions = new ArrayList<>();
+            try {
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(file.getAbsolutePath()));
+                String line = "";
+                int i = 0;
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (i > 0) {
+                        QuestionEntity question = new QuestionEntity();
+                        String[] strQuestion = line.trim().split(",");
+                        question.setCategory(categoryService.getCategoryByName(strQuestion[1].trim()));
+                        question.setQuestionContent(strQuestion[2].trim());
+                        question.setA(strQuestion[3].trim());
+                        question.setB(strQuestion[4].trim());
+                        question.setC(strQuestion[5].trim());
+                        question.setD(strQuestion[6].trim());
+                        question.setAnswer(strQuestion[7].trim());
+                        question.setDuration(Integer.parseInt(strQuestion[8].trim()));
+                        questions.add(question);
+                    }
+                    i++;
+                }
+                bufferedReader.close();
+            } catch (Exception e) {
+                return null;
+            }
+
+            for (QuestionEntity question : questions) {
+                questionService.saveQuestion(question);
+            }
+            model.addAttribute("categories", categoryService.getAllCategories());
+            model.addAttribute("questions", questionService.getQuestionByCategory("Java"));
+            return "redirect:/mentor/listQuestions";
+        } catch (Exception e) {
+            model.addAttribute("csvFile", new CSVFile());
+            model.addAttribute("error", "Upload failed");
+            model.addAttribute("categories", categoryService.getAllCategories());
+            model.addAttribute("questions", questionService.getQuestionByCategory("Java"));
+            return "mentor/listQuestions";
+        }
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public String upload(Model model) {
+        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("questions", questionService.getQuestionByCategory("Java"));
+        return "redirect:/mentor/listQuestions";
+    }
 }

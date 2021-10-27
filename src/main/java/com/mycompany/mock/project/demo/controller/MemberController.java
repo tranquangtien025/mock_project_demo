@@ -140,14 +140,6 @@ public class MemberController {
 
     @RequestMapping(value = {"/learningQuiz"}, method = RequestMethod.GET)
     public String learningQuiz(Model model) {
-//            , HttpSession session) {
-//        List<QuestionEntity> quizes = (List<QuestionEntity>) session.getAttribute("quizes");
-//        if (quizes == null) {
-//            return "redirect:/member/learningQuizEngine";
-//        }
-//        session.setAttribute("quizes", quizes);
-//        model.addAttribute("index", 0);
-//        return "/member/learningQuiz";
         return "redirect:/member/learningQuizEngine";
     }
 

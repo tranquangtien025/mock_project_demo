@@ -80,18 +80,20 @@
                                     New
                                 </button>
                             </td>
-<!--                        <form action="<c:url value="/mentor/upload"/>" method="POST"
-                              enctype="multipart/form-data">
+                        <form action="<c:url value="/mentor/upload"/>" method="POST"
+                              enctype="multipart/form-data"
+                              modelAttribute="csvFile">
                             <td style="padding-left: 40px">
-                                <input name="file" id="fileToUpload" type="file" accept="txt/csv">
-                            </td>
+                                <input name="file" type="file" accept="txt/csv">
+                                <span style="color: red">${error}</span>
+                            </td>                            
                             <td>
-                                <button type="submit" id="btnUploadFile" 
+                                <button type="submit" 
                                         class="btn btn-info" style="width: 100px; font-weight: bold">
                                     Upload
                                 </button>                                
                             </td>
-                        </form>-->
+                        </form>
                         </tr>
                     </table>
                     <br>
@@ -110,7 +112,6 @@
                         </tr>
                         <c:if test="${questions != null && fn:length(questions)>0}">
                             <c:forEach var="question" items="${questions}">
-                                <!--<tr dataId="${question.id}">-->
                                 <tr>    
                                     <td>${question.id}</td>
                                     <td>${question.questionContent}</td>

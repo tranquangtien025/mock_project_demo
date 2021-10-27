@@ -20,7 +20,6 @@ import org.springframework.stereotype.Repository;
 public interface CategoryRepository
         extends CrudRepository<CategoryEntity, Integer>, JpaRepository<CategoryEntity, Integer> {
 
-    @Query(value = "select * from category"
-            + " where category.categoryName = ?1", nativeQuery = true)
+    @Query(value = "select * from category where categoryName = ?1", nativeQuery = true)
     public CategoryEntity findByCategoryName(String name);
 }
