@@ -1,0 +1,21 @@
+No,Categories,Question,Ans1(A),Ans2(B),Ans3(C),Ans4(D),Ans,Duration(seconds)
+1,Java,Tùy ch?n nào sau ?ây d?n ??n tính di ??ng và b?o m?t c?a Java?,Bytecode ???c th?c thi b?i JVM,Applet làm cho mã Java an toàn và di ??ng,S? d?ng x? lý ngo?i l?,Liên k?t ??ng gi?a các ??i t??ng,A,30
+2,Java,Tính n?ng nào không ph?i là tính n?ng c?a Java? ,Dynamic (??ng),Architecture Neutral (??c l?p v?i c?u trúc),Use of pointers (S? d?ng các ?i?m tr?),Object-oriented (H??ng ??i t??ng) ,C,30
+3,Java,_____ ???c s? d?ng ?? tìm và s?a l?i trong các ch??ng trình Java.,JVM,JRE ,JDK ,JDB ,D,30
+4,Java,Ki?u nào sau ?ây là m?t khai báo h?p l? c?a m?t char?,char ch = ‘\utea’;,char ca = ‘tea’;,char cr = \u0223;,char cc = ‘\itea’;,A,30
+5,Java,Ki?u tr? v? c?a ph??ng th?c hashCode () trong l?p Object là gì?,object,int ,long,void ,B,30
+6,Java,?âu là m?t “long literal” h?p l??,ABH8097,L990023,904423,0xnf029L,D,30
+7,Java,Bi?u th?c float a = 35/0 tr? v? k?t qu? gì?,0,Not a Number,Infinity,Runtime exception,C,30
+8,Java,Công c? nào sau ?ây ???c s? d?ng ?? t?o tài li?u API ? ??nh d?ng HTML t? doc comments trong source code?,javap tool,javaw command,Javadoc tool,javah command,C,30
+9,Java,?i?u nào sau ?ây t?o danh sách g?m 3 m?c hi?n th? và nhi?u l?a ch?n ???c k?t h?p?,"new List(false, 3)","new List(3, true)","new List(true, 3)","new List(3, false) ",B,30
+10,Java,"Trong quá trình nào, m?t bi?n c?c b? có cùng tên v?i m?t trong các bi?n cá th??",Serialization,Variable Shadowing,Abstraction,Multi-threading,D,30
+11,Python,Kh?ng ??nh nào sau ?ây v? Python là ?úng?,Python là m?t ngôn ng? l?p trình c?p cao.,Python là m?t ngôn ng? thông d?ch.,Python là ngôn ng? l?p trình h??ng ??i t??ng.,T?t c? các ?áp án ??u ?úng.,D,30
+12,Python,"Kí hi?u nào dùng ?? xác ??nh các kh?i l?nh (kh?i l?nh c?a hàm, vòng l?p,...) trong Python?",D?u ngo?c nh?n { },D?u ngo?c vuông [ ],Th?t l?,D?u ngo?c ??n ( ),C,30
+13,Python,Kh?ng ??nh nào là ?úng v? chú thích trong Python?,Chú thích giúp cho các l?p trình viên hi?u rõ h?n v? ch??ng trình.,Trình thông d?ch Python s? b? qua nh?ng chú thích.,Có th? vi?t chú thích trên cùng m?t dòng v?i l?nh/bi?u th?c ho?c vi?t trên nhi?u dòng mà không v?n ?? gì c?,T?t c? các ?áp án trên.,D,30
+14,Python,?âu là quy t?c ?úng khi ??t tên cho bi?n trong Python?,"Tên bi?n có th? b?t ??u b?ng d?u g?ch d??i "" _ "".",Có th? s? d?ng keyword làm tên bi?n.,Tên bi?n có th? b?t ??u b?ng m?t ch? s?.,"Tên bi?n có th? có các ký hi?u nh? !, @, #, $, %,...",A,30
+15,Python,n = '5' trong ?o?n sau là ki?u d? li?u nào?,integer,string,tuple,operator,B,30
+16,Python,"print(1, 2, 3, 4, sep='*'). Output c?a l?nh sau là:",1 2 3 4,1234,1*2*3*4,24,C,30
+17,Python,L?nh nào dùng ?? l?y d? li?u ??u vào t? ng??i dùng?,cin,scanf(),input(),<>,C,30
+18,Python,"numbers = [2, 3, 4]. print(numbers). K?t qu? c?a ?o?n code d??i ?ây là:","2, 3, 4",2 3 4,"[2, 3, 4]",[2 3 4],C,30
+19,Python,Câu l?nh s? d?ng toán t? AND tr?  v? k?t qu? TRUE khi nào?,C? hai toán h?ng ??u là TRUE.,C? hai toán hàng ??u là FALSE.,M?t trong hai toán h?ng là TRUE.,Toán h?ng ??u tiên là TRUE.,A,30
+20,Python,print(3 >= 3). Output c?a l?nh là:,3 >= 3,TRUE,FALSE,None,B,30
